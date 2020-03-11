@@ -1,0 +1,13 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+#      instead of using a dict let's just use an array that's indexed by the ascii value from a
+#      example: a-a = index 0,  f-a = index 5
+        d = [0]*26
+        for x in magazine:
+            d[ord(x)-ord('a')] += 1
+        for x in ransomNote:
+            d[ord(x)-ord('a')] -= 1
+            if d[ord(x)-ord('a')] < 0:
+                return False
+        return True
+                    
